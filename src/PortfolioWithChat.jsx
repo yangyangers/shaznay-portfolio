@@ -13,8 +13,7 @@ export default function PortfolioWithChat() {
   const bottomRef = useRef(null);
 
   // Replace this with your Flowise deployment URL
-  const FLOWISE_API_URL = "https://flowise-production-a48c.up.railway.app/api/v1/prediction/128c5ff7-b5d0-4bc0-8425-df4afb5df15d";
-
+  const FLOWISE_API_URL = "https://lopezshaznayelaifinals.up.railway.app/";
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -260,7 +259,7 @@ export default function PortfolioWithChat() {
                     <h4 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                       Senior High School - STEM
                     </h4>
-                    <p className="text-blue-600 font-semibold text-base mb-2">University of Cebu - Banilad</p>
+                    <p className="text-blue-600 font-semibold text-base mb-2">University of Cebu - Pri</p>
                     <p className="text-slate-600">2018 - 2020</p>
                   </div>
                 </div>
@@ -405,7 +404,7 @@ export default function PortfolioWithChat() {
               </div>
               <div>
                 <div className="font-bold text-lg">AI Assistant</div>
-                <div className="text-xs text-indigo-100">Powered by Flowise</div>
+                <div className="text-xs text-indigo-100">Powered by Shaznay Samantha Lopez</div>
               </div>
             </div>
             <div className="flex items-center space-x-2">
