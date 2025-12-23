@@ -13,7 +13,8 @@ export default function PortfolioWithChat() {
   const bottomRef = useRef(null);
 
   // Replace this with your Flowise deployment URL
-  const FLOWISE_API_URL = "https://lopezshaznayelaifinals.up.railway.app/";
+  const FLOWISE_API_URL = "https://flowise-production-a48c.up.railway.app/api/v1/prediction/128c5ff7-b5d0-4bc0-8425-df4afb5df15d";
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
