@@ -121,34 +121,35 @@ export default function PortfolioWithChat() {
 
       {/* Hero */}
       <main className="relative max-w-6xl mx-auto p-6">
-        <section id="hero" className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12">
-          <div className="space-y-6">
-            <div className="inline-block">
-              <span className="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
+        <section id="hero" className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12 min-h-[80vh]">
+          <div className="space-y-8">
+            <div className="inline-block animate-bounce">
+              <span className="px-5 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-sm font-semibold shadow-md">
                 👋 Welcome to my portfolio
               </span>
             </div>
-            <h2 className="text-5xl md:text-6xl font-black leading-tight">
+            <h2 className="text-5xl md:text-7xl font-black leading-tight">
               Hi – I'm{" "}
-              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
                 Shaznay
               </span>
             </h2>
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-xl text-slate-600 leading-relaxed font-light">
               4th year BSIT student passionate about crafting elegant web and mobile solutions. 
               I turn ideas into reality through clean code and thoughtful design.
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <a 
                 href="#skills" 
-                className="group px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 hover:scale-105"
+                className="group px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 hover:scale-105 relative overflow-hidden"
               >
-                Explore My Work
-                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                <span className="relative z-10">Explore My Work</span>
+                <span className="relative z-10 inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </a>
               <a 
                 href="#cv" 
-                className="px-8 py-4 bg-white text-indigo-600 font-bold rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 border-2 border-indigo-200"
+                className="px-8 py-4 bg-white text-indigo-600 font-bold rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 border-2 border-indigo-200 hover:border-indigo-400"
               >
                 Download CV
               </a>
@@ -156,15 +157,16 @@ export default function PortfolioWithChat() {
           </div>
           <div className="flex justify-center items-center">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full blur-3xl opacity-40 animate-pulse"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 rounded-full blur-2xl opacity-20 animate-spin-slow"></div>
 
-              <div className="relative rounded-full shadow-2xl w-80 h-80 bg-gradient-to-br from-indigo-200 to-purple-200 hover:scale-105 transition-transform duration-500 ring-8 ring-white flex items-center justify-center overflow-hidden">
-                
+              <div className="relative rounded-full shadow-2xl w-80 h-80 bg-gradient-to-br from-indigo-200 to-purple-200 hover:scale-110 transition-transform duration-700 ring-8 ring-white flex items-center justify-center overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 {/* PLACE YOUR IMAGE HERE */}
                 <img 
                   src="/myphoto.jpg" 
                   alt="Shaznay" 
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
             </div>
@@ -172,30 +174,39 @@ export default function PortfolioWithChat() {
         </section>
 
         {/* Skills */}
-        <section id="skills" className="mt-24 mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-black mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        <section id="skills" className="mt-32 mb-16">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-4">
+              <span className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-sm font-semibold">
+                💻 What I Do
+              </span>
+            </div>
+            <h3 className="text-5xl font-black mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               Technical Skills
             </h3>
-            <p className="text-slate-600">Technologies and tools I work with</p>
+            <p className="text-slate-600 text-lg">Technologies and tools I work with</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: "HTML/CSS/JS", icon: "🌐", color: "from-orange-400 to-red-400" },
-              { name: "Flutter/Dart", icon: "📱", color: "from-blue-400 to-cyan-400" },
-              { name: "ASP.NET Core", icon: "⚡", color: "from-purple-400 to-indigo-400" },
-              { name: "SQL Server/MySQL", icon: "🗄️", color: "from-green-400 to-emerald-400" },
-              { name: "Firebase", icon: "🔥", color: "from-yellow-400 to-orange-400" },
-              { name: "UI/UX Basics", icon: "🎨", color: "from-pink-400 to-rose-400" }
+              { name: "HTML/CSS/JS", icon: "🌐", color: "from-orange-400 to-red-400", desc: "Modern web development" },
+              { name: "Flutter/Dart", icon: "📱", color: "from-blue-400 to-cyan-400", desc: "Cross-platform apps" },
+              { name: "ASP.NET Core", icon: "⚡", color: "from-purple-400 to-indigo-400", desc: "Backend development" },
+              { name: "SQL Server/MySQL", icon: "🗄️", color: "from-green-400 to-emerald-400", desc: "Database management" },
+              { name: "Firebase", icon: "🔥", color: "from-yellow-400 to-orange-400", desc: "Cloud services" },
+              { name: "UI/UX Basics", icon: "🎨", color: "from-pink-400 to-rose-400", desc: "Design principles" }
             ].map((skill, i) => (
               <div 
                 key={i} 
-                className="group relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-slate-100 overflow-hidden"
+                className="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 border-slate-100 overflow-hidden"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
-                <div className="relative flex items-center space-x-4">
-                  <span className="text-4xl">{skill.icon}</span>
-                  <span className="font-bold text-slate-800">{skill.name}</span>
+                <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                <div className={`absolute -right-8 -top-8 w-24 h-24 bg-gradient-to-br ${skill.color} rounded-full opacity-5 group-hover:opacity-20 transition-opacity duration-500`}></div>
+                <div className="relative">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${skill.color} rounded-2xl mb-4 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                    <span className="text-3xl">{skill.icon}</span>
+                  </div>
+                  <h4 className="font-bold text-xl text-slate-800 mb-2">{skill.name}</h4>
+                  <p className="text-slate-500 text-sm">{skill.desc}</p>
                 </div>
               </div>
             ))}
@@ -203,26 +214,93 @@ export default function PortfolioWithChat() {
         </section>
 
         {/* Education */}
-        <section id="education" className="mt-24 mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-black mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        <section id="education" className="mt-32 mb-16">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-4">
+              <span className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-sm font-semibold">
+                🎓 Learning Journey
+              </span>
+            </div>
+            <h3 className="text-5xl font-black mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               Education
             </h3>
-            <p className="text-slate-600">Academic background</p>
+            <p className="text-slate-600 text-lg">Academic background</p>
           </div>
-          <div className="max-w-3xl mx-auto bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all border-2 border-indigo-100 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div className="relative">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center text-white text-2xl font-bold">
-                  🎓
+          
+          <div className="max-w-5xl mx-auto space-y-6">
+            {/* College */}
+            <div className="bg-white p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 border-2 border-indigo-100 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute -right-20 -top-20 w-60 h-60 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+              <div className="relative">
+                <div className="flex items-start space-x-6">
+                  <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center text-white text-3xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    🎓
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-3xl font-black text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                      Bachelor of Science in Information Technology
+                    </h4>
+                    <p className="text-indigo-600 font-bold text-lg mb-3">University of Cebu - Main Campus</p>
+                    <p className="text-slate-600 text-lg">2022 - Present</p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h4 className="text-2xl font-bold text-slate-900 mb-2">
-                    Bachelor of Science in Information Technology
-                  </h4>
-                  <p className="text-indigo-600 font-semibold mb-2">University of Cebu</p>
-                  <p className="text-slate-600">4th Year Student • Expected Graduation 2025</p>
+              </div>
+            </div>
+
+            {/* Senior High School */}
+            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-500 border-2 border-slate-100 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative">
+                <div className="flex items-start space-x-5">
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-md group-hover:scale-110 transition-transform duration-500">
+                    📚
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                      Senior High School - STEM
+                    </h4>
+                    <p className="text-blue-600 font-semibold text-base mb-2">University of Cebu - Banilad</p>
+                    <p className="text-slate-600">2018 - 2020</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Junior High School */}
+            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-500 border-2 border-slate-100 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative">
+                <div className="flex items-start space-x-5">
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-md group-hover:scale-110 transition-transform duration-500">
+                    📖
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">
+                      Junior High School
+                    </h4>
+                    <p className="text-green-600 font-semibold text-base mb-2">Ramon Duterte Memorial National High School</p>
+                    <p className="text-slate-600">2014 - 2018</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Elementary */}
+            <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-500 border-2 border-slate-100 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-50 to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative">
+                <div className="flex items-start space-x-5">
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-md group-hover:scale-110 transition-transform duration-500">
+                    ✏️
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-yellow-600 transition-colors">
+                      Elementary
+                    </h4>
+                    <p className="text-yellow-600 font-semibold text-base mb-2">Guadalupe Elementary School</p>
+                    <p className="text-slate-600">2008 - 2014</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -230,14 +308,19 @@ export default function PortfolioWithChat() {
         </section>
 
         {/* Certificates */}
-        <section id="certificates" className="mt-24 mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-black mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        <section id="certificates" className="mt-32 mb-16">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-4">
+              <span className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-sm font-semibold">
+                🏆 Achievements
+              </span>
+            </div>
+            <h3 className="text-5xl font-black mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               Certificates
             </h3>
-            <p className="text-slate-600">Professional certifications and achievements</p>
+            <p className="text-slate-600 text-lg">Professional certifications and achievements</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { name: "Cisco CCNAv7: Introduction to Networks", icon: "🌐", color: "from-blue-500 to-cyan-500", pdf: "/certificates/ccna-intro-networks.pdf" },
               { name: "Cisco CCNAv7: Switching, Routing and Wireless Essentials", icon: "🔌", color: "from-indigo-500 to-purple-500", pdf: "/certificates/ccna-switching-routing.pdf" }
@@ -247,18 +330,19 @@ export default function PortfolioWithChat() {
                 href={cert.pdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-slate-100 overflow-hidden cursor-pointer"
+                className="group relative bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 border-slate-100 overflow-hidden cursor-pointer"
               >
-                <div className={`absolute top-0 left-0 w-2 h-full bg-gradient-to-b ${cert.color}`}></div>
-                <div className="flex items-center space-x-4">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${cert.color} rounded-2xl flex items-center justify-center text-white text-3xl`}>
+                <div className={`absolute top-0 left-0 w-2 h-full bg-gradient-to-b ${cert.color} group-hover:w-full group-hover:opacity-10 transition-all duration-500`}></div>
+                <div className="absolute -right-12 -bottom-12 w-40 h-40 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div className="relative flex items-center space-x-6">
+                  <div className={`w-20 h-20 bg-gradient-to-br ${cert.color} rounded-3xl flex items-center justify-center text-white text-4xl shadow-lg group-hover:scale-110 transition-transform duration-500`}>
                     {cert.icon}
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-xl font-bold text-slate-900">{cert.name}</h4>
-                    <p className="text-slate-500 text-sm mt-1 flex items-center">
+                    <h4 className="text-xl font-black text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">{cert.name}</h4>
+                    <p className="text-slate-500 text-sm flex items-center">
                       Cisco Networking Academy
-                      <span className="ml-2 text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                      <span className="ml-3 text-indigo-600 opacity-0 group-hover:opacity-100 transition-all transform translate-x-0 group-hover:translate-x-2 text-xl">→</span>
                     </p>
                   </div>
                 </div>
@@ -268,22 +352,30 @@ export default function PortfolioWithChat() {
         </section>
 
         {/* Resume */}
-        <section id="resume" className="mt-24 mb-32">
-          <div className="max-w-3xl mx-auto text-center bg-gradient-to-r from-indigo-600 to-purple-600 p-12 rounded-3xl shadow-2xl">
-            <h3 className="text-4xl font-black mb-4 text-white">
-              Ready to work together?
-            </h3>
-            <p className="text-indigo-100 mb-8 text-lg">
-              Download my resume to learn more about my experience and projects
-            </p>
-            <a 
-              href="/cv.pdf" 
-              download 
-              className="inline-flex items-center space-x-3 px-10 py-5 bg-white text-indigo-600 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 font-bold text-lg group"
-            >
-              <span>Download CV</span>
-              <span className="text-2xl group-hover:translate-y-1 transition-transform">⬇️</span>
-            </a>
+        <section id="resume" className="mt-32 mb-32">
+          <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-16 rounded-3xl shadow-2xl relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            <div className="absolute -top-20 -left-20 w-60 h-60 bg-white rounded-full opacity-10 group-hover:scale-150 transition-transform duration-1000"></div>
+            <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-white rounded-full opacity-10 group-hover:scale-150 transition-transform duration-1000"></div>
+            <div className="relative z-10">
+              <div className="inline-block mb-6">
+                <span className="text-6xl">📄</span>
+              </div>
+              <h3 className="text-5xl font-black mb-6 text-white">
+                Ready to work together?
+              </h3>
+              <p className="text-indigo-100 mb-10 text-xl max-w-2xl mx-auto">
+                Download my resume to learn more about my experience and projects
+              </p>
+              <a 
+                href="/cv.pdf" 
+                download 
+                className="inline-flex items-center space-x-4 px-12 py-6 bg-white text-indigo-600 rounded-2xl shadow-2xl hover:shadow-white/25 transition-all transform hover:-translate-y-2 hover:scale-105 font-bold text-lg group/btn"
+              >
+                <span>Download CV</span>
+                <span className="text-3xl group-hover/btn:translate-y-1 transition-transform">⬇️</span>
+              </a>
+            </div>
           </div>
         </section>
       </main>
@@ -292,10 +384,11 @@ export default function PortfolioWithChat() {
       <div className="fixed right-6 bottom-6 z-50">
         <button
           onClick={() => setShowChat((s) => !s)}
-          className="flex items-center space-x-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-4 rounded-2xl shadow-2xl hover:shadow-indigo-500/50 transition-all transform hover:-translate-y-1 hover:scale-105 group"
+          className="flex items-center space-x-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-5 rounded-3xl shadow-2xl hover:shadow-indigo-500/50 transition-all transform hover:-translate-y-2 hover:scale-110 group relative overflow-hidden"
         >
-          <span className="text-2xl">💬</span>
-          <span className="font-bold">AI Assistant</span>
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <span className="text-3xl relative z-10 group-hover:scale-125 transition-transform">💬</span>
+          <span className="font-bold text-lg relative z-10">AI Assistant</span>
         </button>
       </div>
 
@@ -401,6 +494,21 @@ export default function PortfolioWithChat() {
         }
         .animation-delay-4000 {
           animation-delay: 4s;
+        }
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
         }
       `}</style>
     </div>
