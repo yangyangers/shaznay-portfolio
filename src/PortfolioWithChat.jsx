@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function PortfolioWithChat() {
   const [showChat, setShowChat] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -83,7 +84,7 @@ export default function PortfolioWithChat() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 text-slate-800">
+    <div className={`min-h-screen ${darkMode ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-100' : 'bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 text-slate-800'}`}>
       {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
@@ -117,6 +118,15 @@ export default function PortfolioWithChat() {
             ))}
           </nav>
 
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="hidden md:flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 hover:bg-slate-200 transition ml-4"
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? '☀️' : '🌙'}
+          </button>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -128,16 +138,22 @@ export default function PortfolioWithChat() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden bg-white border-t border-slate-200 py-4">
+          <nav className={`md:hidden ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} border-t py-4`}>
             {['skills', 'projects', 'education', 'certificates', 'contact', 'resume'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className="block w-full text-left px-6 py-3 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors capitalize font-semibold"
+                className={`block w-full text-left px-6 py-3 ${darkMode ? 'text-slate-300 hover:bg-slate-700 hover:text-indigo-400' : 'text-slate-700 hover:bg-indigo-50 hover:text-indigo-600'} transition-colors capitalize font-semibold`}
               >
                 {section}
               </button>
             ))}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className={`block w-full text-left px-6 py-3 ${darkMode ? 'text-slate-300 hover:bg-slate-700' : 'text-slate-700 hover:bg-indigo-50'} transition-colors font-semibold`}
+            >
+              {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+            </button>
           </nav>
         )}
       </header>
@@ -190,7 +206,7 @@ export default function PortfolioWithChat() {
               <div className="relative rounded-full shadow-2xl w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-indigo-200 to-purple-200 hover:scale-110 transition-transform duration-700 ring-8 ring-white flex items-center justify-center overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <img 
-                  src="/api/placeholder/320/320" 
+                  src="myprofile" 
                   alt="Shaznay" 
                   className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
                 />
@@ -223,7 +239,7 @@ export default function PortfolioWithChat() {
             ].map((skill, i) => (
               <div 
                 key={i} 
-                className="group relative bg-white p-6 md:p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 border-slate-100 overflow-hidden"
+                className={`group relative ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'} p-6 md:p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 overflow-hidden`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                 <div className={`absolute -right-8 -top-8 w-24 h-24 bg-gradient-to-br ${skill.color} rounded-full opacity-5 group-hover:opacity-20 transition-opacity duration-500`}></div>
@@ -231,8 +247,8 @@ export default function PortfolioWithChat() {
                   <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${skill.color} rounded-2xl mb-4 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
                     <span className="text-3xl">{skill.icon}</span>
                   </div>
-                  <h4 className="font-bold text-xl text-slate-800 mb-2">{skill.name}</h4>
-                  <p className="text-slate-500 text-sm">{skill.desc}</p>
+                  <h4 className={`font-bold text-xl ${darkMode ? 'text-slate-100' : 'text-slate-800'} mb-2`}>{skill.name}</h4>
+                  <p className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>{skill.desc}</p>
                 </div>
               </div>
             ))}
@@ -261,34 +277,34 @@ export default function PortfolioWithChat() {
                 title: "Homeowner Subdivision Management System",
                 tech: "ASP.NET Core MVC • EF Core • SQL Server",
                 desc: "A role-based system for admins, staff, and homeowners with announcements, feedback & complaints, invoices, and dashboards.",
-                image: "/api/placeholder/400/250",
+                image: "/elnet.png",
                 color: "from-indigo-500 to-purple-500",
               },
               {
                 title: "Sports Store Web Application",
                 tech: "ASP.NET Core MVC • SQL Server",
                 desc: "E-commerce system with product catalog, shopping cart, pagination, checkout validation, and session persistence.",
-                image: "/api/placeholder/400/250",
+                image: "/sport.png",
                 color: "from-purple-500 to-pink-500",
               },
               {
                 title: "Online Library Book Borrowing System",
                 tech: "Flask • Python • SQL",
                 desc: "A library system that manages users, book inventory, borrowing and returning of books with admin controls.",
-                image: "/api/placeholder/400/250",
+                image: "/library.png",
                 color: "from-green-500 to-emerald-500",
               },
               {
                 title: "AI-Powered Portfolio Assistant (RAG)",
-                tech: "Flowise • OpenAI • RAG",
+                tech: "Flowise • GroqAI • RAG",
                 desc: "A personalized AI assistant integrated into my portfolio that answers questions about my skills, education, and projects.",
                 image: "/api/placeholder/400/250",
                 color: "from-blue-500 to-cyan-500",
               },
               {
                 title: "GREEN ROUTE: Planner for Cyclists and Pedestrians",
-                tech: "Capstone Project",
-                desc: "A route-planning concept focused on safety, accessibility, and sustainable transportation for cyclists and pedestrians.",
+                tech: "Flutter • Firebase • Google Maps",
+                desc: "A capstone project that designs a route-planning system emphasizing safety, accessibility, and sustainable transportation for cyclists and pedestrians.",
                 image: "/api/placeholder/400/250",
                 color: "from-emerald-500 to-teal-500",
               },
@@ -302,12 +318,12 @@ export default function PortfolioWithChat() {
             ].map((project, i) => (
               <div
                 key={i}
-                className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 border-slate-100 overflow-hidden flex flex-col"
+                className={`group relative ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'} rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 overflow-hidden flex flex-col`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                 
                 {/* Project Image */}
-                <div className="relative h-48 md:h-56 overflow-hidden bg-gradient-to-br from-slate-200 to-slate-300">
+                <div className={`relative h-48 md:h-56 overflow-hidden ${darkMode ? 'bg-gradient-to-br from-slate-700 to-slate-600' : 'bg-gradient-to-br from-slate-200 to-slate-300'}`}>
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -318,13 +334,13 @@ export default function PortfolioWithChat() {
 
                 {/* Project Content */}
                 <div className="relative p-6 md:p-8 flex flex-col flex-1">
-                  <h4 className="text-xl md:text-2xl font-black text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                  <h4 className={`text-xl md:text-2xl font-black ${darkMode ? 'text-slate-100' : 'text-slate-900'} mb-2 group-hover:text-indigo-600 transition-colors`}>
                     {project.title}
                   </h4>
                   <p className="text-sm font-semibold text-indigo-600 mb-3">
                     {project.tech}
                   </p>
-                  <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                  <p className={`leading-relaxed text-sm md:text-base ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                     {project.desc}
                   </p>
                 </div>
@@ -381,7 +397,7 @@ export default function PortfolioWithChat() {
             ].map((edu, i) => (
               <div 
                 key={i}
-                className={`bg-white ${edu.highlight ? 'p-8 md:p-10' : 'p-6 md:p-8'} rounded-3xl ${edu.highlight ? 'shadow-2xl' : 'shadow-lg'} hover:shadow-xl transition-all duration-500 border-2 ${edu.highlight ? 'border-indigo-100' : 'border-slate-100'} relative overflow-hidden group`}
+                className={`bg-white ${edu.highlight ? 'p-8 md:p-10' : 'p-6 md:p-8'} rounded-3xl ${edu.highlight ? 'shadow-2xl' : 'shadow-lg'} hover:shadow-xl transition-all duration-500 border-2 ${edu.highlight ? (darkMode ? 'border-slate-700' : 'border-indigo-100') : (darkMode ? 'border-slate-700' : 'border-slate-100')} relative overflow-hidden group ${darkMode ? 'bg-slate-800' : 'bg-white'}`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${edu.color}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                 <div className="relative">
@@ -390,13 +406,13 @@ export default function PortfolioWithChat() {
                       {edu.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className={`${edu.highlight ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'} font-black text-slate-900 mb-2 md:mb-3 group-hover:text-indigo-600 transition-colors`}>
+                      <h4 className={`${edu.highlight ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'} font-black ${darkMode ? 'text-slate-100' : 'text-slate-900'} mb-2 md:mb-3 group-hover:text-indigo-600 transition-colors`}>
                         {edu.level}
                       </h4>
                       <p className={`text-indigo-600 font-bold ${edu.highlight ? 'text-base md:text-lg' : 'text-sm md:text-base'} mb-2`}>
                         {edu.school}
                       </p>
-                      <p className="text-slate-600 text-sm md:text-base">{edu.years}</p>
+                      <p className={`text-sm md:text-base ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>{edu.years}</p>
                     </div>
                   </div>
                 </div>
@@ -428,7 +444,7 @@ export default function PortfolioWithChat() {
                 href={cert.pdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative bg-white p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 border-slate-100 overflow-hidden cursor-pointer"
+                className={`group relative ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'} p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 overflow-hidden cursor-pointer`}
               >
                 <div className={`absolute top-0 left-0 w-2 h-full bg-gradient-to-b ${cert.color} group-hover:w-full group-hover:opacity-10 transition-all duration-500`}></div>
                 <div className="absolute -right-12 -bottom-12 w-40 h-40 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
@@ -437,8 +453,8 @@ export default function PortfolioWithChat() {
                     {cert.icon}
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-lg md:text-xl font-black text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">{cert.name}</h4>
-                    <p className="text-slate-500 text-sm flex items-center">
+                    <h4 className={`text-lg md:text-xl font-black ${darkMode ? 'text-slate-100' : 'text-slate-900'} mb-2 group-hover:text-indigo-600 transition-colors`}>{cert.name}</h4>
+                    <p className={`text-sm flex items-center ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
                       Cisco Networking Academy
                       <span className="ml-3 text-indigo-600 opacity-0 group-hover:opacity-100 transition-all transform translate-x-0 group-hover:translate-x-2 text-xl">→</span>
                     </p>
@@ -668,7 +684,7 @@ export default function PortfolioWithChat() {
         </div>
       </aside>
 
-      <footer className="relative max-w-6xl mx-auto p-8 text-center text-slate-500 border-t border-slate-200 mt-16">
+      <footer className={`relative max-w-6xl mx-auto p-8 text-center ${darkMode ? 'border-slate-700 text-slate-500' : 'border-slate-200 text-slate-500'} border-t mt-16`}>
         <p className="text-sm">
           Built with <span className="text-red-500">❤️</span> by Shaznay Samantha Lopez • © 2025
         </p>
