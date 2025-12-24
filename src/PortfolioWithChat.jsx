@@ -206,7 +206,7 @@ export default function PortfolioWithChat() {
               <div className="relative rounded-full shadow-2xl w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-indigo-200 to-purple-200 hover:scale-110 transition-transform duration-700 ring-8 ring-white flex items-center justify-center overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <img 
-                  src="/myprofile.jpg" 
+                  src="/myphoto.jpg" 
                   alt="Shaznay" 
                   className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
                 />
