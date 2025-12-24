@@ -305,7 +305,7 @@ export default function PortfolioWithChat() {
                 title: "GREEN ROUTE: Planner for Cyclists and Pedestrians",
                 tech: "Flutter • Firebase • Google Maps",
                 desc: "A mobile capstone project that designs a route-planning system emphasizing safety, accessibility, and sustainable transportation for cyclists and pedestrians.",
-                image: "/green.jpg",
+                image: "/green.png",
                 color: "from-emerald-500 to-teal-500",
               },
               {
