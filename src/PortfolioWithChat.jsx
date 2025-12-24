@@ -291,28 +291,28 @@ export default function PortfolioWithChat() {
                 title: "Online Library Book Borrowing System",
                 tech: "Flask • Python • SQL",
                 desc: "A library system that manages users, book inventory, borrowing and returning of books with admin controls.",
-                image: "/public/library.png",
+                image: "/library.png",
                 color: "from-green-500 to-emerald-500",
               },
               {
                 title: "AI-Powered Portfolio Assistant (RAG)",
                 tech: "Flowise • GroqAI • RAG",
                 desc: "A personalized AI assistant integrated into my portfolio that answers questions about my skills, education, and projects.",
-                image: "/api/placeholder/400/250",
+                image: "/ai.png",
                 color: "from-blue-500 to-cyan-500",
               },
               {
                 title: "GREEN ROUTE: Planner for Cyclists and Pedestrians",
                 tech: "Flutter • Firebase • Google Maps",
-                desc: "A capstone project that designs a route-planning system emphasizing safety, accessibility, and sustainable transportation for cyclists and pedestrians.",
-                image: "/api/placeholder/400/250",
+                desc: "A mobile capstone project that designs a route-planning system emphasizing safety, accessibility, and sustainable transportation for cyclists and pedestrians.",
+                image: "/greenroute.jpg",
                 color: "from-emerald-500 to-teal-500",
               },
               {
                 title: "Smart Trash Bin with Sensors",
                 tech: "IoT • Sensors • Solar Power",
                 desc: "A touchless trash bin concept using sensors and solar energy to improve hygiene and accessibility.",
-                image: "/api/placeholder/400/250",
+                image: "/trash.png",
                 color: "from-yellow-500 to-orange-500",
               },
             ].map((project, i) => (
@@ -642,7 +642,7 @@ export default function PortfolioWithChat() {
                   m.role === "user" 
                     ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white" 
                     : "bg-white text-slate-800 shadow-md border border-slate-200"
-                } p-3 md:p-4 rounded-2xl max-w-[85%] md:max-w-[80%] ${m.role === "user" ? "rounded-br-sm" : "rounded-bl-sm"} text-sm md:text-base`}
+                } p-3 md:p-4 rounded-2xl max-w-[85%] md:max-w-[80%] ${m.role === "user" ? "rounded-br-sm" : "rounded-bl-sm"} text-sm md:text-base whitespace-pre-wrap`}
               >
                 {m.content}
               </div>
