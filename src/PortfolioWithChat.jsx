@@ -105,7 +105,7 @@ export default function PortfolioWithChat() {
           
           {/* Desktop Navigation */}
           <nav className="space-x-6 hidden md:flex">
-            {['skills', 'projects', 'education', 'certificates', 'resume'].map((section) => (
+            {['skills', 'projects', 'education', 'certificates', 'contact', 'resume'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
@@ -129,7 +129,7 @@ export default function PortfolioWithChat() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <nav className="md:hidden bg-white border-t border-slate-200 py-4">
-            {['skills', 'projects', 'education', 'certificates', 'resume'].map((section) => (
+            {['skills', 'projects', 'education', 'certificates', 'contact', 'resume'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
@@ -142,8 +142,9 @@ export default function PortfolioWithChat() {
         )}
       </header>
 
-      {/* Hero */}
+      {/* Main Content */}
       <main className="relative max-w-6xl mx-auto p-6">
+        {/* Hero Section */}
         <section id="hero" className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12 min-h-[80vh]">
           <div className="space-y-8 order-2 md:order-1">
             <div className="inline-block animate-bounce">
@@ -168,124 +169,7 @@ export default function PortfolioWithChat() {
               >
                 <span className="relative z-10">Explore My Work</span>
                 <span className="relative z-10 inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <span className="text-xl">🤖</span>
-              </div>
-              <div>
-                <div className="font-bold text-base md:text-lg">AI Assistant</div>
-                <div className="text-xs text-indigo-100 hidden sm:block">Powered by Shaznay</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-2">
-              <button 
-                onClick={clearHistory} 
-                className="text-xs bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full transition backdrop-blur-sm"
-                aria-label="Clear chat history"
-              >
-                Clear
-              </button>
-              <button 
-                onClick={() => setShowChat(false)} 
-                className="w-8 h-8 rounded-full hover:bg-white/20 flex items-center justify-center transition"
-                aria-label="Close chat"
-              >
-                ✕
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex-1 overflow-auto p-4 md:p-6 space-y-4 bg-slate-50">
-          {messages.map((m, i) => (
-            <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-              <div 
-                className={`${
-                  m.role === "user" 
-                    ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white" 
-                    : "bg-white text-slate-800 shadow-md border border-slate-200"
-                } p-3 md:p-4 rounded-2xl max-w-[85%] ${m.role === "user" ? "rounded-br-sm" : "rounded-bl-sm"} text-sm md:text-base`}
-              >
-                {m.content}
-              </div>
-            </div>
-          ))}
-          {loading && (
-            <div className="flex justify-start">
-              <div className="bg-white p-4 rounded-2xl rounded-bl-sm shadow-md border border-slate-200">
-                <div className="flex space-x-2">
-                  <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: "0.1s"}}></div>
-                  <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{animationDelay: "0.2s"}}></div>
-                </div>
-              </div>
-            </div>
-          )}
-          <div ref={bottomRef} />
-        </div>
-
-        <div className="p-3 md:p-4 bg-white border-t border-slate-200">
-          <div className="flex items-center space-x-2 md:space-x-3">
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Ask me anything..."
-              className="flex-1 px-4 md:px-5 py-2 md:py-3 text-sm md:text-base rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-indigo-400 transition"
-              aria-label="Chat input"
-            />
-            <button 
-              disabled={loading} 
-              onClick={handleSend}
-              className="px-4 md:px-6 py-2 md:py-3 text-sm md:text-base rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold hover:shadow-lg transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-label="Send message"
-            >
-              Send
-            </button>
-          </div>
-        </div>
-      </aside>
-
-      <footer className="relative max-w-6xl mx-auto p-8 text-center text-slate-500 border-t border-slate-200 mt-16">
-        <p className="text-sm">
-          Built with <span className="text-red-500">❤️</span> by Shaznay Samantha Lopez • © 2025
-        </p>
-      </footer>
-
-      <style>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -20px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(20px, 20px) scale(1.05); }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        @keyframes gradient {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 3s ease infinite;
-        }
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-      `}</style>
-    </div>
-  );
-}absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </button>
               <a 
                 href="/cv.pdf" 
@@ -296,6 +180,8 @@ export default function PortfolioWithChat() {
               </a>
             </div>
           </div>
+
+          {/* Hero Image */}
           <div className="flex justify-center items-center order-1 md:order-2">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full blur-3xl opacity-40 animate-pulse"></div>
@@ -375,61 +261,70 @@ export default function PortfolioWithChat() {
                 title: "Homeowner Subdivision Management System",
                 tech: "ASP.NET Core MVC • EF Core • SQL Server",
                 desc: "A role-based system for admins, staff, and homeowners with announcements, feedback & complaints, invoices, and dashboards.",
-                icon: "🏘️",
+                image: "/api/placeholder/400/250",
                 color: "from-indigo-500 to-purple-500",
               },
               {
                 title: "Sports Store Web Application",
                 tech: "ASP.NET Core MVC • SQL Server",
                 desc: "E-commerce system with product catalog, shopping cart, pagination, checkout validation, and session persistence.",
-                icon: "🛍️",
+                image: "/api/placeholder/400/250",
                 color: "from-purple-500 to-pink-500",
               },
               {
                 title: "Online Library Book Borrowing System",
                 tech: "Flask • Python • SQL",
                 desc: "A library system that manages users, book inventory, borrowing and returning of books with admin controls.",
-                icon: "📚",
+                image: "/api/placeholder/400/250",
                 color: "from-green-500 to-emerald-500",
               },
               {
                 title: "AI-Powered Portfolio Assistant (RAG)",
                 tech: "Flowise • OpenAI • RAG",
                 desc: "A personalized AI assistant integrated into my portfolio that answers questions about my skills, education, and projects.",
-                icon: "🤖",
+                image: "/api/placeholder/400/250",
                 color: "from-blue-500 to-cyan-500",
               },
               {
                 title: "GREEN ROUTE: Planner for Cyclists and Pedestrians",
                 tech: "Capstone Project",
                 desc: "A route-planning concept focused on safety, accessibility, and sustainable transportation for cyclists and pedestrians.",
-                icon: "🚲",
+                image: "/api/placeholder/400/250",
                 color: "from-emerald-500 to-teal-500",
               },
               {
                 title: "Smart Trash Bin with Sensors",
                 tech: "IoT • Sensors • Solar Power",
                 desc: "A touchless trash bin concept using sensors and solar energy to improve hygiene and accessibility.",
-                icon: "🗑️",
+                image: "/api/placeholder/400/250",
                 color: "from-yellow-500 to-orange-500",
               },
             ].map((project, i) => (
               <div
                 key={i}
-                className="group relative bg-white p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 border-slate-100 overflow-hidden"
+                className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 border-slate-100 overflow-hidden flex flex-col"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                <div className="relative">
-                  <div className={`w-16 h-16 mb-6 bg-gradient-to-br ${project.color} rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg group-hover:scale-110 transition-transform duration-500`}>
-                    {project.icon}
-                  </div>
+                
+                {/* Project Image */}
+                <div className="relative h-48 md:h-56 overflow-hidden bg-gradient-to-br from-slate-200 to-slate-300">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
+                </div>
+
+                {/* Project Content */}
+                <div className="relative p-6 md:p-8 flex flex-col flex-1">
                   <h4 className="text-xl md:text-2xl font-black text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
                     {project.title}
                   </h4>
                   <p className="text-sm font-semibold text-indigo-600 mb-3">
                     {project.tech}
                   </p>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-slate-600 leading-relaxed text-sm md:text-base">
                     {project.desc}
                   </p>
                 </div>
@@ -488,7 +383,7 @@ export default function PortfolioWithChat() {
                 key={i}
                 className={`bg-white ${edu.highlight ? 'p-8 md:p-10' : 'p-6 md:p-8'} rounded-3xl ${edu.highlight ? 'shadow-2xl' : 'shadow-lg'} hover:shadow-xl transition-all duration-500 border-2 ${edu.highlight ? 'border-indigo-100' : 'border-slate-100'} relative overflow-hidden group`}
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${edu.color.replace('from-', 'from-').replace('to-', 'to-')}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-r ${edu.color}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                 <div className="relative">
                   <div className="flex items-start space-x-4 md:space-x-6">
                     <div className={`flex-shrink-0 ${edu.highlight ? 'w-16 h-16 md:w-20 md:h-20' : 'w-14 h-14 md:w-16 md:h-16'} bg-gradient-to-br ${edu.color} rounded-2xl md:rounded-3xl flex items-center justify-center text-white ${edu.highlight ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'} font-bold shadow-lg group-hover:scale-110 transition-transform duration-500`}>
@@ -551,6 +446,97 @@ export default function PortfolioWithChat() {
                 </div>
               </a>
             ))}
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="mt-32 mb-16 scroll-mt-20">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-4">
+              <span className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-sm font-semibold">
+                📬 Get in Touch
+              </span>
+            </div>
+            <h3 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              Contact Information
+            </h3>
+            <p className="text-slate-600 text-lg">Let's connect and discuss opportunities</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-12">
+            {[
+              {
+                icon: "📧",
+                title: "Email",
+                value: "shaznaylopez@gmail.com",
+                link: "mailto:shaznaylopez@gmail.com",
+                color: "from-blue-500 to-cyan-500"
+              },
+              {
+                icon: "📱",
+                title: "Phone",
+                value: "09293171433",
+                link: "tel:09293171433",
+                color: "from-green-500 to-emerald-500"
+              }
+            ].map((contact, i) => (
+              <a
+                key={i}
+                href={contact.link}
+                className="group relative bg-white p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 border-slate-100 overflow-hidden"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${contact.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                <div className="relative">
+                  <div className={`w-16 h-16 mb-6 bg-gradient-to-br ${contact.color} rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                    {contact.icon}
+                  </div>
+                  <h4 className="text-2xl font-black text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                    {contact.title}
+                  </h4>
+                  <p className="text-slate-600 text-lg font-semibold break-all">
+                    {contact.value}
+                  </p>
+                  <p className="text-indigo-600 text-sm mt-4 flex items-center opacity-0 group-hover:opacity-100 transition-all transform translate-x-0 group-hover:translate-x-2">
+                    Click to open
+                    <span className="ml-2 text-xl">→</span>
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="max-w-4xl mx-auto bg-gradient-to-r from-indigo-50 to-purple-50 p-8 md:p-12 rounded-3xl border-2 border-indigo-100">
+            <h4 className="text-2xl font-black text-slate-900 mb-6 text-center">Send me a Message</h4>
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="px-5 py-3 rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-indigo-400 transition text-sm md:text-base"
+                />
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="px-5 py-3 rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-indigo-400 transition text-sm md:text-base"
+                />
+              </div>
+              <input
+                type="text"
+                placeholder="Subject"
+                className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-indigo-400 transition text-sm md:text-base"
+              />
+              <textarea
+                placeholder="Your Message"
+                rows="5"
+                className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-indigo-400 transition text-sm md:text-base resize-none"
+              ></textarea>
+              <button
+                type="submit"
+                className="w-full px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 hover:scale-105"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </section>
 
@@ -681,8 +667,8 @@ export default function PortfolioWithChat() {
           </div>
         </div>
       </aside>
-        
-  <footer className="relative max-w-6xl mx-auto p-8 text-center text-slate-500 border-t border-slate-200 mt-16">
+
+      <footer className="relative max-w-6xl mx-auto p-8 text-center text-slate-500 border-t border-slate-200 mt-16">
         <p className="text-sm">
           Built with <span className="text-red-500">❤️</span> by Shaznay Samantha Lopez • © 2025
         </p>
